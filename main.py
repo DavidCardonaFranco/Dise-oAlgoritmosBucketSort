@@ -1,5 +1,6 @@
 #Importanción de recursos de una Interfaz de línea de comandos y un invocable.
-from timeit import timeit
+import random
+
 
 def bucket_sort(arreglo):
     #Inicialización de variables
@@ -38,9 +39,18 @@ def insertion_sort(arreglo):
         arreglo[j + 1] = temp
 
 
-arreglo = input("Ingrese los elementos a ordenar =>").split()
-arreglo = [int(x) for x in arreglo]
+#arreglo = input("Ingrese los elementos a ordenar =>").split()
+arreglo = []
+for i in range(100000):
+    arreglo.append(random.randint(1, 100))
+
+#arreglo = [int(x) for x in arreglo]
+from time import time
+start_time = time()
 lista_ordenada = bucket_sort(arreglo)
+elapsed_time = time() - start_time
+
 print('Lista Ordenada: ', end='')
 print(lista_ordenada)
-print(f"{timeit()} segundos")
+
+print("Elapsed time: %.10f seconds." % elapsed_time)
